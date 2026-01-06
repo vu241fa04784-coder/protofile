@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sreeram — Portfolio</title>
+  <style>
+    :root{--accent:#4a90e2;--soft:#eef4fb}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;background:var(--soft);color:#222}
+
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav .links{display:flex;gap:12px}
+    nav a{color:#333;text-decoration:none;padding:8px 12px;border-radius:8px}
+    nav a:hover{background:rgba(0,0,0,0.04)}
+
+  
+    .hero{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:center;max-width:1100px;margin:28px auto;padding:28px;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+    .profile-pic{width:200px;height:200px;border-radius:12px;overflow:hidden}
+    .profile-pic img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero .info h1{margin:0 0 8px;font-size:28px;color:var(--accent)}
+    .hero .info p{margin:0;color:#444}
+    .hero .actions{margin-top:14px;display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.08)}
+
+
+    .steps{max-width:1100px;margin:18px auto;padding:0 28px}
+    .stepper{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+    .step{background:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.04);cursor:pointer;border:2px solid transparent}
+    .step.active{border-color:var(--accent);}
+    .step b{display:block}
+    .step-content{background:#fff;padding:18px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.04)}
+
+    .gallery{max-width:1100px;margin:20px auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+    .card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.06);cursor:pointer}
+    .card img{width:100%;height:150px;object-fit:cover;display:block}
+    .card .meta{padding:12px}
+    .card h3{margin:0;color:var(--accent);font-size:16px}
+    .card p{margin:8px 0 0;color:#666;font-size:13px}
+
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:16px}
+    .modal.open{display:flex}
+    .modal-card{background:#fff;border-radius:10px;max-width:900px;width:100%;display:grid;grid-template-columns:1fr 360px;overflow:hidden}
+    .modal-card img{width:100%;height:100%;object-fit:cover}
+    .modal-side{padding:18px}
+    .close{float:right;border:0;background:transparent;font-size:20px;cursor:pointer}
+
+    footer{max-width:1100px;margin:24px auto;padding:12px 20px;color:#555}
+
+    @media (max-width:820px){
+      .hero{grid-template-columns:1fr}
+      .modal-card{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <div class="logo">SA</div>
+      <div>
+        <div style="font-weight:700">Sreeram Arriboyina</div>
+        <div style="font-size:12px;color:#666">Student • Aspiring Software Engineer</div>
+      </div>
+    </div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+ 
+  <section id="home" class="hero">
+    <div class="profile-pic">
+      
+      <img src="MYPHOTO.jpg" alt="Sreeram Profile">
+    </div>
+    <div class="info">
+      <h1>Hello — I'm Sreeram</h1>
+      <p>Welcome to my portfolio. I build simple, real-life apps using Python, C, Java and web technologies. Here you'll see projects I made for college and personal practice.</p>
+
+      <div class="actions">
+        <button class="btn primary" id="startTour">Start Tour</button>
+        <button class="btn ghost" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="steps" id="about">
+    <div class="stepper">
+      <div class="step active" data-step="0"><small>1</small><b>Intro</b></div>
+      <div class="step" data-step="1"><small>2</small><b>Education</b></div>
+      <div class="step" data-step="2"><small>3</small><b>Skills</b></div>
+      <div class="step" data-step="3"><small>4</small><b>Projects</b></div>
+      <div class="step" data-step="4"><small>5</small><b>Contact</b></div>
+    </div>
+
+    <div id="stepContent" class="step-content">
+   
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <button class="btn ghost" id="prevBtn">Previous</button>
+      <button class="btn primary" id="nextBtn">Next</button>
+    </div>
+  </section>
+
+
+  <section id="projects" class="gallery">
+
+
+    <div class="card" data-id="1" onclick="openModal(1)">
+      <img src="LOGO.HTML.jpg" alt="Brindavan Dairy">
+      <div class="meta"><h3>Brindavan Dairy App</h3><p>Order app with product catalog and cart.</p></div>
+    </div>
+
+    <div class="card" data-id="2" onclick="openModal(2)">
+      <img src="image1.png" alt="Food">
+      <div class="meta"><h3>Sree's Grand Restaruent</h3><p>“Every meal served by the blessings of Krishna.”</p></div>
+    </div>
+
+    <div class="card" data-id="3" onclick="openModal(3)">
+      <img src="image2.png" alt="College Events">
+      <div class="meta"><h3>Medicine Remainder App</h3><p>“Stay healthy, stay timely.”</p></div>
+    </div>
+
+    <div class="card" data-id="4" onclick="openModal(4)">
+      <img src="image.png" alt="Expense tracker">
+      <div class="meta"><h3>Expense Tracker</h3><p>“Track. Categorize. Visualize. Save.”</p></div>
+    </div>
+  </section>
+
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div style="min-height:240px;overflow:hidden"><img id="modalImg" src="" alt=""></div>
+      <div class="modal-side">
+        <button class="close" onclick="closeModal()">✕</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc" style="color:#555"></p>
+        <div style="margin-top:12px">
+          <a id="modalLive" href="#" target="_blank" class="btn primary" style="margin-right:8px">Live Demo</a>
+          <a id="modalRepo" href="#" target="_blank" class="btn ghost">Repository</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <strong>Sreeram Arriboyina</strong><br>
+        <small>Singarayakonda, Andhra Pradesh</small>
+      </div>
+      <div style="text-align:right">
+        <small>Email: your-email@example.com</small><br>
+        <small>Phone: +91-XXXX-XXXX-6069</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+   
+    const steps = [
+      {title:'Intro', html:'Hi — I am Sreeram. I like building small apps that solve daily problems. I am learning web & mobile development.'},
+      {title:'Education', html:'Currently studying B.Tech (CSE). Interested in programming, data and web development.'},
+      {title:'Skills', html:'C, Python, Java, HTML, CSS, JavaScript. Familiar with basic data structures and algorithms.'},
+      {title:'Projects', html:'I build projects like an order app, expense tracker and small ML demos. See below for screenshots.'},
+      {title:'Contact', html:'You can reach me via email or phone. I am open to internships and college projects.'}
+    ];
+
+    const stepEls = document.querySelectorAll('.step');
+    const stepContent = document.getElementById('stepContent');
+    let current = 0;
+
+    function renderStep(i){
+      current = i;
+      stepEls.forEach(s=>s.classList.remove('active'));
+      document.querySelector(`.step[data-step="${i}"]`).classList.add('active');
+      stepContent.innerHTML = `<h3>${steps[i].title}</h3><p style="color:#444">${steps[i].html}</p>`;
+      document.getElementById('prevBtn').disabled = i===0;
+      document.getElementById('nextBtn').innerText = i===steps.length-1 ? 'Finish' : 'Next';
+    }
+
+    document.getElementById('startTour').addEventListener('click', ()=>{document.getElementById('about').scrollIntoView({behavior:'smooth'});renderStep(0)});
+    document.getElementById('prevBtn').addEventListener('click', ()=>{if(current>0) renderStep(current-1)});
+    document.getElementById('nextBtn').addEventListener('click', ()=>{if(current<steps.length-1) renderStep(current+1); else document.getElementById('projects').scrollIntoView({behavior:'smooth'})});
+
+    stepEls.forEach(s=>s.addEventListener('click', ()=>renderStep(Number(s.dataset.step))));
+
+    renderStep(0);
+
+    const projects = {
+      1:{title:'Brindavan Dairy App',desc:'Order app with product catalog, cart & admin dashboard.',img:'images/brindavan-dairy.png',live:'#',repo:'#'},
+      2:{title:'Expense Tracker',desc:'PWA for logging expenses with charts and categories.',img:'images/expense-tracker.png',live:'#',repo:'#'},
+      3:{title:'College Events Portal',desc:'Events listing and registration with roles.',img:'images/college-events.png',live:'#',repo:'#'},
+      4:{title:'Image Classification',desc:'ML model demo using transfer learning and API.',img:'images/image-classification.png',live:'#',repo:'#'}
+    };
+
+    function openModal(id){
+      const p = projects[id];
+      if(!p) return;
+      document.getElementById('modalImg').src = p.img;
+      document.getElementById('modalTitle').innerText = p.title;
+      document.getElementById('modalDesc').innerText = p.desc;
+      document.getElementById('modalLive').href = p.live;
+      document.getElementById('modalRepo').href = p.repo;
+      document.getElementById('modal').classList.add('open');
+      document.getElementById('modal').setAttribute('aria-hidden','false');
+    }
+    function closeModal(){document.getElementById('modal').classList.remove('open');document.getElementById('modal').setAttribute('aria-hidden','true');}
+    document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeModal()});
+    document.getElementById('modal').addEventListener('click',(e)=>{if(e.target===document.getElementById('modal'))closeModal();});
+  </script>
+</body>
+</html>
